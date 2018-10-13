@@ -9,8 +9,8 @@ function nextLoteryDay(dateInserted) {
   console.log('next lotery day: ', checkDate(dateInserted));
 }
 function checkDate(dateInserted) {
-  if (dateInserted.getDay() !== 0  //isnt sunday
-    && (dateInserted.getDay() % 3 === 0 || dateInserted.getDay() % 6 === 0) //wednesday or saturday
+  if (!isSunday(dateInserted)
+    && (isWednesday(dateInserted) || isSaturday(dateInserted))
     && dateInserted.getHours() <= 20) { //before 20:00
     dateInserted.setHours(20);
     dateInserted.setMinutes(0);
@@ -21,8 +21,18 @@ function checkDate(dateInserted) {
   newDate = new Date(newDate.setHours(20));
   return checkDate(newDate);
 }
+function isWednesday(dateInserted) {
+  return dateInserted.getDay() % 3 === 0;
+}
 
-nextLoteryDay('August 19, 1975 23:15:30');
+function isSaturday(dateInserted) {
+  return dateInserted.getDay() % 6 === 0;
+}
 
+function isSunday(dateInserted) {
+  return dateInserted.getDay() === 0;
+}
 
-//nextLoteryDay();
+// nextLoteryDay('August 19, 1975 23:15:30');
+
+nextLoteryDay();
