@@ -33,6 +33,6 @@ function isSunday(dateInserted) {
   return dateInserted.getDay() === 0;
 }
 
-// nextLoteryDay('August 19, 1975 23:15:30');
+nextLoteryDay('August 19, 1975 23:15:30');
 
 nextLoteryDay();
